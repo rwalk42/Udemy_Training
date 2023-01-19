@@ -6,6 +6,7 @@ import Functions
 import time
 
 now = time.strftime("%b %d, %Y - %H:%M:%S")
+print("The time is below:")
 print("It is..", now)
 
 user_prompt = "Type add (task), show (all tasks), edit (task number), complete (task number) or exit:   "
