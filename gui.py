@@ -24,7 +24,7 @@ window = sg.Window("My To-Do App",
                            [input_box, add_button],
                            [list_box, edit_button, complete_button],
                            [exit_button]],
-                   font=('Helvitica',20))
+                   font=('Helvetica',20))
 
 while True:
     event, values = window.read(timeout=200)
@@ -49,7 +49,7 @@ while True:
                 window['todos'].update(values=todos)
                 window['todo'].update(value='')
             except IndexError:
-                sg.Popup("Please select and item first", font=('Helvitica', 20))
+                sg.Popup("Please select and item first", font=('Helvetica', 20))
         case 'Complete':
             try:
                 todo_to_complete = values['todos'][0]
