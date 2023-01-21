@@ -2,7 +2,7 @@
 
 #Lesson 14 creates a separate file in the folder "Functions" in the same directory. Two methods..
 #from Functions import get_todos, write_todos
-import Functions
+import functions
 import time
 
 now = time.strftime("%b %d, %Y - %H:%M:%S")
@@ -22,10 +22,10 @@ while True:
     if user_action.startswith("add"):
         todo = user_action[4:]
 
-        todos = Functions.get_todos()
+        todos = functions.get_todos()
 
         todos.append(todo + '\n')
-        Functions.write_todos(todos)
+        functions.write_todos(todos)
 
     elif user_action.startswith("show"):
         with open('todos.txt', 'r') as file:
@@ -51,7 +51,7 @@ while True:
             new_todo = input("type a new entry  ")
             todos[number] = new_todo + '\n'
 
-            Functions.write_todos(todos)
+            functions.write_todos(todos)
 
             #print(todos)
         except ValueError:
@@ -62,13 +62,13 @@ while True:
         try:
             number = int(user_action[9:])
 
-            todos = Functions.get_todos()
+            todos = functions.get_todos()
 
             index = number - 1
             todo_to_remove = todos[index].strip('\n')
             todos.pop(number - 1)
 
-            Functions.write_todos(todos)
+            functions.write_todos(todos)
 
             message = f"The To Do, {todo_to_remove}, was removed from the list"
             print(message)
