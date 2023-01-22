@@ -1,6 +1,11 @@
 import functions
 import PySimpleGUI as sg
 import time
+import os
+
+if not os.path.exists("todos.txt"):
+    with open("todos.txt", 'w') as file:
+        pass
 
 sg.theme("Black")
 #Find themes here: https://www.geeksforgeeks.org/themes-in-pysimplegui/
@@ -9,14 +14,14 @@ sg.theme("Black")
 clock = sg.Text("", key='clock')
 label = sg.Text("Type in a To-Do")
 input_box = sg.InputText(tooltip="Enter To-Do", key="todo")
-add_button = sg.Button(size=4,image_source="venv/add.png", mouseover_colors="LightBlue2",
+add_button = sg.Button(size=4,image_source="add.png", mouseover_colors="LightBlue2",
                        tooltip="Add a To Do", key="Add")
 list_box = sg.Listbox(values=functions.get_todos(),
                       key='todos',
                       enable_events=True,
                       size=[45, 10])
 edit_button = sg.Button("Edit")
-complete_button = sg.Button(size=4,image_source="venv/complete.png", mouseover_colors="LightBlue2",
+complete_button = sg.Button(size=4,image_source="complete.png", mouseover_colors="LightBlue2",
                             tooltip="Mark as Complete",key="Complete")
 exit_button = sg.Button("Exit")
 
@@ -26,7 +31,7 @@ window = sg.Window("My To-Do App",
                            [input_box, add_button],
                            [list_box, edit_button, complete_button],
                            [exit_button]],
-                   font=('Helvetica',20))
+                   font=('Helvetica', 20))
 
 while True:
     event, values = window.read(timeout=200)
@@ -61,7 +66,7 @@ while True:
                 window['todos'].update(values=todos)
                 window['todo'].update(value='')
             except IndexError:
-                sg.Popup("Please select and item first", font=('Helvitica', 20))
+                sg.Popup("Please select and item first", font=('Helvetica', 20))
         case 'Exit':
             break
         case 'todos':
